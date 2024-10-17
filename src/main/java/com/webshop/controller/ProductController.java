@@ -20,7 +20,7 @@ import com.webshop.domain.Product;
 import com.webshop.service.ProductService;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProductController {
 
 	@Autowired

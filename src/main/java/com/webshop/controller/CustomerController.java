@@ -20,7 +20,7 @@ import com.webshop.domain.Customer;
 import com.webshop.service.CustomerService;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/customers")
 public class CustomerController {
 
 	@Autowired

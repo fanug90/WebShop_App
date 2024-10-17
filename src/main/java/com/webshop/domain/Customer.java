@@ -1,5 +1,6 @@
 package com.webshop.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -19,17 +20,19 @@ public class Customer {
 	private String email;
 	private String phone;
 	private Address address;
+	private Address billingAddress;
+	private Address shippingAddress;
 	private Account account;
-	private List<CreditCard> listOfCreditCards;
-	private List<Order> orders;
+	private List<CreditCard> listOfCreditCards =  new ArrayList<>();
+	private List<Order> orders = new ArrayList<>();
+	private ShippingOption shippingOption;
 
 	public Customer() {
 		super();
 	}
 
 	public Customer(String customerNumber, String fristName, String lastName, String email, String phone,
-			Address address, Account account, List<CreditCard> listOfCreditCards, List<Order> orders) {
-		super();
+			Address address, Account account, List<Order> orders) {
 		this.customerNumber = customerNumber;
 		this.fristName = fristName;
 		this.lastName = lastName;
@@ -37,12 +40,32 @@ public class Customer {
 		this.phone = phone;
 		this.address = address;
 		this.account = account;
-		this.listOfCreditCards = listOfCreditCards;
+		//listOfCreditCards.add(creditcard);
 		this.orders = orders;
 	}
 
-	public void addOrder(Order order) {
-		orders.add(order);
+	public Address getBillingAddress() {
+		return billingAddress;
+	}
+
+	public void setBillingAddress(Address billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+
+	public Address getShippingAddress() {
+		return shippingAddress;
+	}
+
+	public void setShippingAddress(Address shippingAddress) {
+		this.shippingAddress = shippingAddress;
+	}
+
+	public ShippingOption getShippingOption() {
+		return shippingOption;
+	}
+
+	public void setShippingOption(ShippingOption shippingOption) {
+		this.shippingOption = shippingOption;
 	}
 
 	public String getCustomerNumber() {
@@ -107,14 +130,19 @@ public class Customer {
 
 	public void setListOfCreditCards(List<CreditCard> listOfCreditCards) {
 		this.listOfCreditCards = listOfCreditCards;
+//		listOfCreditCards.add(creditCard);
 	}
+//	public void addOrder(Order order) {
+//		orders.add(order);
+//	}
 
 	public List<Order> getOrders() {
 		return orders;
 	}
 
-	public void setOrders(List<Order> orders) {
+	public void setOrders(List<Order> order) {
 		this.orders = orders;
+//		orders.add(order);
 	}
 
 }

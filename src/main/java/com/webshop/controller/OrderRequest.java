@@ -7,20 +7,12 @@ import com.webshop.domain.ShippingOption;
 
 public class OrderRequest {
 	
-	private Customer customer;
     private Address shippingAddress;
     private Address billingAddress;
     private CreditCard creditCard;
     private ShippingOption shippingOption;
 
     // Getters and Setters for all fields
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 
     public Address getShippingAddress() {
         return shippingAddress;

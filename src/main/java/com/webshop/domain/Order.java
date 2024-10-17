@@ -1,20 +1,14 @@
 package com.webshop.domain;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import lombok.Getter;
-import lombok.Setter;
-
 @Document
-@Getter
-@Setter
 public class Order {
-	
+
 	@Id
 	private String orderNumber;
 	private Date date;
@@ -22,23 +16,29 @@ public class Order {
 	private Address billingAddress;
 	private CreditCard creditCard;
 	private List<OrderLine> orderLines;
-	private Customer customer;
+	private String customerNumber;
 	private ShippingOption shippingOption;
 
-	public Order( Customer customer,  Address shippingAddress, Address billingAddress,
-			CreditCard creditCard, List<OrderLine> orderLines, ShippingOption shippingOption) {
-		
+	public Order() {
+		super();
+		this.date = new Date();
+	}
+
+	public Order(String customerNumber, Address shippingAddress, Address billingAddress, CreditCard creditCard, List<OrderLine> orderlines,
+			ShippingOption shippingOption) {
+
+		this.customerNumber = customerNumber;
 		this.date = new Date();
 		this.shippingAddress = shippingAddress;
 		this.billingAddress = billingAddress;
 		this.creditCard = creditCard;
 		this.orderLines = orderLines;
-		this.customer = customer;
+
 		this.shippingOption = shippingOption;
 	}
 
 	public void confirm() {
-		
+
 	}
 
 	public String getOrderNumber() {
@@ -89,12 +89,12 @@ public class Order {
 		this.orderLines = orderLines;
 	}
 
-	public Customer getCustomer() {
-		return customer;
+	public String getCustomerNumber() {
+		return customerNumber;
 	}
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public void setCustomerNumber(String customerNumber) {
+		this.customerNumber = customerNumber;
 	}
 
 	public ShippingOption getShippingOption() {
@@ -104,5 +104,5 @@ public class Order {
 	public void setShippingOption(ShippingOption shippingOption) {
 		this.shippingOption = shippingOption;
 	}
-	
+
 }
